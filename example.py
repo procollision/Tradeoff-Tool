@@ -1,5 +1,10 @@
 import tradeoff_class as tc
 #Define paramters in tradeoff
+#Name is the display name used in table printing
+#weight is the assigned weight for the parameter
+#Limitype is how the range of values that will give map top [0,1]. there are three options "fixed" the rnage is manually defined,
+#"minmax" the range is defined such that the worst option is 0 and the best is 1, "SD" the range is given as mean+-x*standard deviation
+#limitype is only nesscarry for "fixed" where it defines the manual rangee, and "SD" where it defines x
 avi = tc.param(name="Availability",weight=1/3,Limitype ="fixed",Limit_val=[1,5])
 acc = tc.param(name="Accuracy",weight=1/3,Limitype ="fixed",Limit_val=[1,5])
 sam = tc.param(name="sample rate",weight=1/3,Limitype ="fixed",Limit_val=[1,5])
