@@ -257,7 +257,7 @@ class sensitivity:
 			pool = mp.Pool(mp.cpu_count())
 			self.per = pool.map(self.sens, range(self.n))
 			self.per = np.sum(self.per,axis=0)/self.n
-		elif platform.system() == "Windows"
+		elif platform.system() == "Windows":
 			self.per = []
 			for i in range(self.n):
 				self.per.append(self.sens(i))
