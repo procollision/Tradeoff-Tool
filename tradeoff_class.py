@@ -1,6 +1,7 @@
 import numpy as np
 import copy
 import multiprocessing as mp
+import platform
 
 class color:
 	def __init__(self, code, name):
@@ -251,11 +252,16 @@ class sensitivity:
 		ret[np.where(tro_temp.total == np.amax(tro_temp.total))] = 1
 		return ret
 
-	def get_sens_linux(self):
-		pool = mp.Pool(mp.cpu_count())
-		self.per = pool.map(self.sens, range(self.n))
-		self.per = np.sum(self.per,axis=0)/self.n
-
+	def get_sens(self):
+		if platform.system() == "Linux":
+			pool = mp.Pool(mp.cpu_count())
+			self.per = pool.map(self.sens, range(self.n))
+			self.per = np.sum(self.per,axis=0)/self.n
+		elif platform.system() == "Windows"
+			self.per = []
+			for i in range(self.n):
+				self.per.append(self.sens(i))
+			self.per = np.sum(self.per,axis=0)/self.n
 		
 	
 	def get_RMS(self):
